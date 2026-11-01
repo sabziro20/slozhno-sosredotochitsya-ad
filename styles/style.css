@@ -1,5 +1,331 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font);
+  font-size: var(--text-size);
+  line-height: 1.3;
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before,
+.decorated-zone::after {
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  border: 0 solid var(--ui-color);
+}
+
+.decorated-zone::before {
+  inset-block-start: var(--page-padding);
+  inset-inline-end: var(--page-padding);
+  border-block-start-width: 1px;
+  border-inline-end-width: 1px;
+}
+
+.decorated-zone::after {
+  inset-block-end: var(--page-padding);
+  inset-inline-start: var(--page-padding);
+  border-block-end-width: 1px;
+  border-inline-start-width: 1px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+  padding: var(--page-padding) var(--page-padding) 0;
+  background-image: var(--cover);
+  background-size: cover;
+  background-position: center;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  padding: 0 13px;
+  border: 1px solid transparent;
+  background: none;
+  color: var(--ui-color);
+  font-size: var(--text-size);
+  line-height: 24px;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+.header__theme-menu-button_active {
+  border-color: var(--ui-color);
+  cursor: default;
+}
+
+.header__rec {
+  position: absolute;
+  inset-block-start: var(--page-padding);
+  inset-inline-end: var(--page-padding);
+  display: flex;
+  align-items: center;
+  block-size: 25px;
+  color: var(--ui-color);
+  visibility: var(--neon-visibility);
+}
+
+.header__rec-text {
+  text-transform: uppercase;
+}
+
+.header__rec-img {
+  margin-inline: 2px;
+}
+
+.header__title,
+.footer__title {
+  margin: 0;
+  color: var(--title-color);
+  font-size: var(--title-size);
+  font-weight: bold;
+  line-height: 0.85;
+  text-shadow: 0.025em 0.025em 0 var(--title-shadow);
+}
+
+.header__title {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline: 0;
+  transform: translateY(-50%);
+}
+
+.header__text {
+  max-inline-size: 490px;
+  margin-block: auto 135px;
+  margin-inline-start: auto;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  padding: var(--content-padding-block) var(--page-padding);
+}
+
+.nofocus__title,
+.reasons__title,
+.tips__title {
+  color: var(--ui-color);
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.nofocus__item-title,
+.reasons__item-title,
+.tips__subtitle,
+.tips__item-title,
+.gallery__title {
+  margin-block-end: 10px;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.tips__item-title {
+  font-weight: normal;
+}
+
+.tips__subtitle,
+.gallery__title {
+  margin-block-end: 0;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  text-shadow: 2px 3px 0 var(--accent);
+}
+
+.nofocus,
+.reasons,
+.tips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.nofocus__title,
+.reasons__title,
+.tips__title {
+  grid-column: 1;
+}
+
+.nofocus__list,
+.tips__content {
+  grid-column: 2 / 4;
+}
+
+.nofocus__list,
+.tips__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tips__subtitle {
+  margin-block-end: 20px;
+}
+
+.reasons__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column: 1 / -1;
+  gap: 20px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gallery__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery__item {
+  position: relative;
+}
+
+.gallery__image {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.gallery__item_type_sunset {
+  grid-column: 1 / 3;
+  aspect-ratio: 5 / 2;
+}
+
+.gallery__item_type_ice-cream {
+  grid-column: 3;
+  grid-row: 1 / 3;
+}
+
+.gallery__item_type_tape {
+  grid-column: 1;
+  grid-row: 2 / 4;
+}
+
+.gallery__item_type_books {
+  grid-column: 2;
+  aspect-ratio: 1;
+}
+
+.gallery__item_type_street {
+  grid-column: 2 / 4;
+  aspect-ratio: 3 / 2;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 100vh;
+}
+
+@media (max-width: 1023px) {
+  .header__theme-menu {
+    margin-block-start: 172px;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .header__text {
+    max-inline-size: 364px;
+    margin-block-end: 184px;
+  }
+
+  .nofocus,
+  .reasons,
+  .tips {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .nofocus__list,
+  .tips__content {
+    grid-column: 2;
+  }
+
+  .reasons__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .header__theme-menu {
+    margin-block-start: 65px;
+  }
+
+  .header__text {
+    margin-block-end: 67px;
+  }
+
+  .header__title {
+    padding-inline-start: var(--page-padding);
+  }
+
+  .nofocus,
+  .reasons,
+  .tips {
+    grid-template-columns: 1fr;
+  }
+
+  .nofocus__title,
+  .reasons__title,
+  .tips__title,
+  .nofocus__list,
+  .tips__content {
+    grid-column: 1;
+  }
+
+  .gallery {
+    gap: 10px;
+  }
+
+  .gallery__list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .gallery__item_type_sunset,
+  .gallery__item_type_ice-cream,
+  .gallery__item_type_tape,
+  .gallery__item_type_books,
+  .gallery__item_type_street {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .gallery__item_type_ice-cream {
+    aspect-ratio: 1;
+  }
+
+  .gallery__item_type_tape {
+    aspect-ratio: 3 / 2;
+  }
 }
